@@ -1,0 +1,44 @@
+inspirations-hyatt
+Hotel site clone minimum(Days INN and others)
+-Ability to book
+	-Search available hotels using location,check-in/check-out date,Guest count
+		-List of hotels in the city with ability to filter the hotels
+	-Cancel reservation
+-Ability to create an account and sign-in
+	-Delete account
+	-Change user info
+-Hotels(Might just do 1 hotel)
+	-List of all hotels
+-Hotel Amenities(Based on drury hotels)
+	-Free breakfast
+	-Swimming pool
+	-Jacuzzi
+	-Free wifi
+	-Free workout center
+-Guest testimony(Slider)
+	-Important quote as title
+	-Rating(out of 5-stars)
+-Hotel Info
+	-Checkin/checkout times
+	-smoking policy
+	-pet policy(only parrots allow but with $5 fee per stay)
+	-parking?
+
+-Footer
+	-Contact number
+	-Address
+	-menu
+Possible database tables
+-Reservation(checkin time,checkout time,status)
+-User(username,name,email,phone number,home_address?)
+(user/guest)_reservation (check_in_date,checkout_date,)
+-Guest(Name,email,phone number)
+-Hotel
+-Rooms(status,checked_in_date,checked_out_date)
+-RoomTypes?(room_count,total_bed_count,king_bed_count,queen_bed_count,twin_bed_count)
+-City
+-Review(Date,Reviewer name,review,review_highlight)
+
+
+Possible additions:
+-Gallery
