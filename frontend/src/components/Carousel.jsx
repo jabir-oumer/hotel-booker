@@ -1,37 +1,51 @@
 import  { useState } from 'react';
 
+import Rooms1 from '../assets/rooms-1.webp';
+import Rooms2 from '../assets/rooms-2.webp';
+import Rooms3 from '../assets/rooms-3.webp';
+import Rooms4 from '../assets/rooms-4.webp';
+
+const images = [Rooms1, Rooms2, Rooms3, Rooms4];
+
 const Carousel = () => {
-  const [activeItem, setActiveItem] = useState(0);
+  const [activeItem, setActiveItem] = useState(1);
 
   const handlePrev = () => {
-    setActiveItem((prevItem) => (prevItem > 0 ? prevItem - 1 : 0));
+    const totalItems = images.length;
+    setActiveItem((prevItem) => (prevItem > 0 ? prevItem - 1 : totalItems - 1)); // Cycle to the last item when at the beginning
   };
 
   const handleNext = () => {
-    const totalItems = 3; // Update this value accordingly
-    setActiveItem((prevItem) => (prevItem < totalItems - 1 ? prevItem + 1 : prevItem));
+    const totalItems = images.length;
+    setActiveItem((prevItem) => (prevItem < totalItems - 1 ? prevItem + 1 : 0)); // Cycle to the first item when at the end
+  };
+
+  const handleImageClick = (index) => {
+    setActiveItem(index);
   };
 
   const getTranslateX = (index) => {
-    return `calc( ${75 * (index - activeItem)}%)`;
+    return `calc( ${65 * (index - activeItem)}%)`;
   };
 
   return (
-    <div className="relative w-full h-screen ">
+    <div className="relative w-full h-screen  mt-6">
       <div className="relative h-[90%] overflow-hidden rounded-lg">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <div
-            key={index}
-            className=" duration-700 ease-in-out"
-            style={{ transform: `translateX(${getTranslateX(index)})` }}
-          >
-            <img
-              src={`https://flowbite.s3.amazonaws.com/docs/gallery/square/image-${index + 1}.jpg`}
-              className="absolute max-w-full  -translate-x-1/2 top-0 left-1/2"
-              alt=""
-            />
-          </div>
-        ))}
+        {images.map((image, index) => (
+                  <div
+                    key={index}
+                    className="duration-700 ease-in-out"
+                    style={{ transform: `translateX(${getTranslateX(index)})` }}
+                    
+                  >
+                    <img
+                      src={image}
+                      className="absolute w-3/5 h-[90vh] -translate-x-1/2  top-0 left-1/2"
+                      alt={`Room ${index + 1}`}
+                      onClick={() => handleImageClick(index)}
+                    />
+                  </div>
+                ))}
       </div>
 
       <div className="flex justify-center items-center pt-4">
