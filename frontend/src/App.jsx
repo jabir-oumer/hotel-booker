@@ -2,6 +2,7 @@ import Carousel from "./components/Carousel"
 import Navbar from "./components/NavBar"
 import TopNavBar from "./components/TopNavBar"
 import Body from "./components/body"
+import Stepper from "./components/Stepper"
 export default function App() {
   return (
    
@@ -14,6 +15,7 @@ export default function App() {
   <h1>Rooms</h1>
   </div>
 <Carousel/>
+<Stepper/>
 </div>
 
   )
