@@ -1,6 +1,7 @@
 import  { useState } from 'react';
 
-const Bed = () => {
+// eslint-disable-next-line react/prop-types
+const Bed = ({data}) => {
   const [bedrooms, setBedrooms] = useState(3);
 
   const handleIncrement = () => {
@@ -48,7 +49,7 @@ const Bed = () => {
             <svg className="w-2.5 h-2.5 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8v10a1 1 0 0 0 1 1h4v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5h4a1 1 0 0 0 1-1V8M1 10l9-9 9 9"/>
             </svg>
-            <span>Bedrooms</span>
+            <span>{data}</span>
           </div>
           <button
             type="button"

@@ -1,18 +1,22 @@
+/* eslint-disable no-unused-vars */
 import  { useState } from 'react';
 
 
-import Rooms1 from '../assets/rooms-1.webp';
-import Rooms2 from '../assets/rooms-2.webp';
-import Rooms3 from '../assets/rooms-3.webp';
-import Rooms4 from '../assets/rooms-4.webp';
+// import Rooms1 from '../assets/rooms-1.webp';
+// import Rooms2 from '../assets/rooms-2.webp';
+// import Rooms3 from '../assets/rooms-3.webp';
+// import Rooms4 from '../assets/rooms-4.webp';
 import Bed from './base/Bed';
+import ProductCardSlider from './productCardSlider';
+import SecondProductCard from './secondProductCard';
+import PaymentPage from './payment';
 
-const images = [Rooms1, Rooms2, Rooms3, Rooms4];
+// const images = [Rooms1, Rooms2, Rooms3, Rooms4];
 
 const Stepper = () => {
   const [activeStep, setActiveStep] = useState(1); // Default to the first step
-  const [step1Content, setStep1Content] = useState('');
-  const [step2Content, setStep2Content] = useState('');
+  const [step1Content, setStep1Content] = useState('adfaf');
+  const [step2Content, setStep2Content] = useState('adf');
 
   const handleStepClick = (step) => {
     // Only allow clicking on previous steps or the current active step
@@ -32,20 +36,19 @@ const Stepper = () => {
     switch (activeStep) {
       case 1:
         return (
-          <div>
-            <p>Select Room Info</p>
+          <div className='w-full px-10 text-start'>
+            <h1>Select Room Info</h1>
+            
             {/* Add your content for Step 1 here */}
            <div className="flex gap-4 ">
-           <Bed/>
-            <Bed/>
+           
+           <Bed data={"Bedrooms"}/>
+            <Bed data={"guests"}/>
+            3
            </div>
-           <hr className="h-2 my-8 bg-gray-200 border-0 dark:bg-gray-700"/>
+           <hr className="h-1.5 rounded-lg mb-8 mt-5 bg-gray-200 border-0 dark:bg-gray-700"/>
 
-            <textarea
-              placeholder="Enter room info..."
-              value={step1Content}
-              onChange={(e) => setStep1Content(e.target.value)}
-            />
+           <ProductCardSlider onClick={handleNextClick}/>
 
           </div>
         );
@@ -54,12 +57,8 @@ const Stepper = () => {
           <div>
             <p>User Info</p>
             {/* Add your content for Step 2 here */}
-            <textarea
-              placeholder="Enter user info..."
-              value={step2Content}
-              onChange={(e) => setStep2Content(e.target.value)}
-            />
-
+            
+            <SecondProductCard onClick = {handleNextClick}/>
 
             {/*  */}
             
@@ -87,7 +86,7 @@ const Stepper = () => {
         return (
           <div>
             {/* Add your content for Step 3 here */}
-            <p>Payment</p>
+            <PaymentPage/>
           </div>
         );
       default:
@@ -96,7 +95,7 @@ const Stepper = () => {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4">
+    <div className="flex flex-col items-center space-y-4 min-h-screen min-w-[100vw]">
       <ol className="flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800 dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
         {[1, 2, 3].map((step) => (
           <li
@@ -132,14 +131,14 @@ const Stepper = () => {
       </ol>
 
 
-  <div className="flex items-center  w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800 dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
+  <div className="w-full">
 
       {/* Render the content based on the active step */}
       {renderStepContent()}
 
       </div>
       {/* Navigation button */}
-      {activeStep < 3 && (
+      {/* {activeStep < 3 && (
         <button
           className="px-4 py-2 mt-4 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
           onClick={handleNextClick}
@@ -147,7 +146,7 @@ const Stepper = () => {
           >
           Next
         </button>
-      )}
+      )} */}
       </div>
   );
 };
